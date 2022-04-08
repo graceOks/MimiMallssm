@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--spring接管mybatis-->
+
+    <!--    属性文件的读取-->
+    <!--读取 jdbc.properties 属性文件-->
+    <!--<context:property-placeholder location="classpath:config/jdbc.properties"/>-->
+
+
+    <!-- 读取jdbc.properties配置文件到Spring容器中 -->
+    <context:property-placeholder location="classpath:config/jdbc.properties"/>
+
+    <!--创建数据源-->
+    <bean class="com.alibaba.druid.pool.DruidDataSource" id="druidDataSource" init-method="init" destroy-method="close">
+        <!-- SpringEL 语法 ${key} ${values} -->
+        <property name="url" value="${mysql.jdbc.url}"/>
+        <property name="username" value="${mysql.jdbc.username}"/>
+        <property name="password" value="${mysql.jdbc.password}"/>
+        <property name="driverClassName" value="${mysql.jdbc.driverClassName}"/>
+    </bean>
+
+    <!--    创建 SqlSessionFactoryBean-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+        <!--配置数据源-->
+        <property name="dataSource" ref="druidDataSource"/>
+        <!--配置 mybatis的核心配置文件-->
+        <property name="configLocation" value="classpath:config/SqlMapConfig.xml"/>
+        <!--配置实体类-->
+        <property name="typeAliasesPackage" value="com.atguigu.pojo"/>
+    </bean>
+
+    <!--    创建 mapper 文件的扫描器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注册 mapper文件-->
+        <property name="basePackage" value="com.atguigu.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
+</beans>
