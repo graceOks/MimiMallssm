@@ -28,4 +28,6 @@ public interface ProductInfoService {
     int deleteByID(int pid);
 
     int deleteBatch(String []ids);
+
+
 }
