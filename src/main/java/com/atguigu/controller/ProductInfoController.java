@@ -3,7 +3,6 @@ package com.atguigu.controller;
 import com.atguigu.pojo.ProductInfo;
 import com.atguigu.service.ProductInfoService;
 import com.github.pagehelper.PageInfo;
-import org.apache.commons.fileupload.FileItemFactory;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

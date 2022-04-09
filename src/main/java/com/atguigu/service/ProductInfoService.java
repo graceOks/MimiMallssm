@@ -20,7 +20,12 @@ public interface ProductInfoService {
     //按主键id查询商品
     ProductInfo getByID(int pid);
 
+    //修改
     int update(ProductInfo productInfo);
 
 
+    //删除
+    int deleteByID(int pid);
+
+    int deleteBatch(String []ids);
 }
