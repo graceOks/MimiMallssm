@@ -218,7 +218,6 @@ public class ProductInfoController {
         String[] pid = pids.split(",");
         System.out.println("pid= " + pid);
 
-
         try {
             int deleteResult = productInfoService.deleteBatch(pid);
             if (deleteResult>0) {
@@ -230,6 +229,7 @@ public class ProductInfoController {
             request.setAttribute("smg", "商品不可删除!");
         }
         return "forward:/prod/deleteAjaxSplit.action";
+
     }
 
 
