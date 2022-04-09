@@ -50,7 +50,6 @@ public class ProductInfoController {
     @ResponseBody
     @RequestMapping("/ajaxSplit.action")
     public void ajaxSplit(int page, HttpSession httpSession) {
-
         System.out.println("Ajax...");
         //取得当前page参数的页面的数据
         PageInfo info = productInfoService.splitPage(page, PAGE_SIZE);
@@ -68,8 +67,7 @@ public class ProductInfoController {
         //获取文件上传目录
         String realPath = request.getSession().getServletContext().getRealPath("");
         System.out.println("fileItem.getName() = 获取上传图片的文件名" + fileItem.getName());
-    }
-    */
+    }*/
 
     @ResponseBody
     @RequestMapping("/ajaxImg.action")
@@ -78,7 +76,6 @@ public class ProductInfoController {
         System.out.println("AjaxImage...");
         //String saveFileName = FileNameUtil.getUUIDFileName() + FileNameUtil.getFileType(pimage.getOriginalFilename());
         //System.out.println("saveFileName ===>> " + saveFileName);
-
 
         //获取原始图片名称
         originalFilename = pimage.getOriginalFilename();
@@ -178,6 +175,40 @@ public class ProductInfoController {
         // 而下一次更新时要使用这个变量做为判断的依据,就会出错,所以必须清空originalFilename
         originalFilename="";
         return "forward:/prod/split.action";
+    }
+
+    //单个删除 Ajax请求
+    @ResponseBody
+    @RequestMapping(value = "/deleteAjaxSplit.action",produces = "text/html;charset=utf-8")
+    public Object deleteAjaxSplit(HttpServletRequest request){
+        //取得第1页的数据
+        PageInfo pageInfo = productInfoService.splitPage(1, PAGE_SIZE);
+        request.getSession().setAttribute("info", pageInfo);
+        return request.getAttribute("msg");
+    }
+
+
+    //批量删除功能
+    @RequestMapping("/deleteBatch.action")
+    //pids="1,4,5" ps[1,4,5]
+    public String deleteBatch(String pids,HttpServletRequest request){
+        System.out.println("BatchDelete...");
+        System.out.println("pids= " + pids);
+        //将上传上来的字符串截开,形成商品id的字符数组
+        String[] pid = pids.split(",");
+        System.out.println("pid= " + pid);
+
+        int deleteResult = productInfoService.deleteBatch(pid);
+        try {
+            if (deleteResult>0) {
+                request.setAttribute("msg", "删除成功");
+            }else {
+                request.setAttribute("msg", "删除失败");
+            }
+        } catch (Exception e) {
+            request.setAttribute("smg", "商品不可删除!");
+        }
+        return "forward:/prod/deleteAjaxSplit";
     }
 
 }
