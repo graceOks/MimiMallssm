@@ -181,15 +181,19 @@ public class ProductInfoController {
     //单个删除功能
     @RequestMapping("/delete.action")
     public String delete(int pid,HttpServletRequest request){
-        int deleteByID=productInfoService.deleteByID(pid);
-        if (deleteByID>0){
-            request.setAttribute("msg","删除成功");
-        }else {
-            request.setAttribute("msg","删除失败");
+        System.out.println("delete...");
+        try {
+            int deleteByID=productInfoService.deleteByID(pid);
+            if (deleteByID>0){
+                request.setAttribute("msg","删除成功");
+            }else {
+                request.setAttribute("msg","删除失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
-        return "update";
+        //删除结束后跳转到分页显示
+        return "forward:/prod/deleteAjaxSplit.action";
     }
 
 
@@ -214,8 +218,9 @@ public class ProductInfoController {
         String[] pid = pids.split(",");
         System.out.println("pid= " + pid);
 
-        int deleteResult = productInfoService.deleteBatch(pid);
+
         try {
+            int deleteResult = productInfoService.deleteBatch(pid);
             if (deleteResult>0) {
                 request.setAttribute("msg", "删除成功");
             }else {
