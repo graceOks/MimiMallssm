@@ -4,18 +4,18 @@ public class ProductInfoVO {
     //商品名称条件的封装
     private String pname;
     //商品类型条件的封装
-    private String typeid;
+    private int typeid;
 
     //最低价格的封装
-    private String lprice;
+    private Integer lprice;
 
     //最高价格的封装
-    private String hprice;
+    private Integer hprice;
 
     public ProductInfoVO() {
     }
 
-    public ProductInfoVO(String pname, String typeid, String lprice, String hprice) {
+    public ProductInfoVO(String pname, int typeid, Integer lprice, Integer hprice) {
         this.pname = pname;
         this.typeid = typeid;
         this.lprice = lprice;
@@ -30,27 +30,27 @@ public class ProductInfoVO {
         this.pname = pname;
     }
 
-    public String getTypeid() {
+    public int getTypeid() {
         return typeid;
     }
 
-    public void setTypeid(String typeid) {
+    public void setTypeid(int typeid) {
         this.typeid = typeid;
     }
 
-    public String getLprice() {
+    public Integer getLprice() {
         return lprice;
     }
 
-    public void setLprice(String lprice) {
+    public void setLprice(Integer lprice) {
         this.lprice = lprice;
     }
 
-    public String getHprice() {
+    public Integer getHprice() {
         return hprice;
     }
 
-    public void setHprice(String hprice) {
+    public void setHprice(Integer hprice) {
         this.hprice = hprice;
     }
 

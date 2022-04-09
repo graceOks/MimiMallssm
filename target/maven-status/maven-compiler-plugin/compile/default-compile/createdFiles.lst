@@ -14,6 +14,7 @@ com\atguigu\pojo\UsersExample$GeneratedCriteria.class
 com\atguigu\mapper\UsersMapper.class
 com\atguigu\pojo\ProductTypeExample.class
 com\atguigu\mapper\CarshopMapper.class
+com\atguigu\pojo\vo\ProductInfoVO.class
 com\atguigu\pojo\Admin.class
 com\atguigu\utils\FileNameUtil.class
 com\atguigu\pojo\UsersExample$Criteria.class

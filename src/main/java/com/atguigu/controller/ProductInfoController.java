@@ -190,7 +190,7 @@ public class ProductInfoController {
                 request.setAttribute("msg","删除失败");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            request.setAttribute("msg","商品删除出错!");
         }
         //删除结束后跳转到分页显示
         return "forward:/prod/deleteAjaxSplit.action";

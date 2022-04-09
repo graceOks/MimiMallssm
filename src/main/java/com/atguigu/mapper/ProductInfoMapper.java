@@ -2,6 +2,7 @@ package com.atguigu.mapper;
 
 import com.atguigu.pojo.ProductInfo;
 import com.atguigu.pojo.ProductInfoExample;
+import com.atguigu.pojo.vo.ProductInfoVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -31,5 +32,8 @@ public interface ProductInfoMapper {
 
     //批量删除商品的功能
     int deleteBatch(String []ids);
+
+    //多条件查询商品
+    List<ProductInfo> selectCondition(ProductInfoVO vo);
 
 }
