@@ -229,7 +229,7 @@ public class ProductInfoController {
         } catch (Exception e) {
             request.setAttribute("smg", "商品不可删除!");
         }
-        return "forward:/prod/deleteAjaxSplit";
+        return "forward:/prod/deleteAjaxSplit.action";
     }
 
 }
