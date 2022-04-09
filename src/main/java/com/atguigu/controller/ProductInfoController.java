@@ -148,6 +148,15 @@ public class ProductInfoController {
         return "update";
     }
 
+    //单个删除功能
+    @RequestMapping("/delete.action")
+    public String delete(int pid,HttpServletRequest request){
+        int deleteByID=productInfoService.deleteByID(pid);
+        request.setAttribute("prod",deleteByID);
+
+        return "update";
+    }
+
 
     @RequestMapping("/update.action")
     public String update(ProductInfo productInfo,HttpServletRequest request){
