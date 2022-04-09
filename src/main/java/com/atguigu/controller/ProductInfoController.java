@@ -148,14 +148,6 @@ public class ProductInfoController {
         return "update";
     }
 
-    //单个删除功能
-    @RequestMapping("/delete.action")
-    public String delete(int pid,HttpServletRequest request){
-        int deleteByID=productInfoService.deleteByID(pid);
-        request.setAttribute("prod",deleteByID);
-
-        return "update";
-    }
 
 
     @RequestMapping("/update.action")
@@ -185,6 +177,21 @@ public class ProductInfoController {
         originalFilename="";
         return "forward:/prod/split.action";
     }
+
+    //单个删除功能
+    @RequestMapping("/delete.action")
+    public String delete(int pid,HttpServletRequest request){
+        int deleteByID=productInfoService.deleteByID(pid);
+        if (deleteByID>0){
+            request.setAttribute("msg","删除成功");
+        }else {
+            request.setAttribute("msg","删除失败");
+        }
+
+
+        return "update";
+    }
+
 
     //单个删除 Ajax请求
     @ResponseBody
