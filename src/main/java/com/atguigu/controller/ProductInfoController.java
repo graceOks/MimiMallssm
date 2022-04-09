@@ -232,4 +232,5 @@ public class ProductInfoController {
         return "forward:/prod/deleteAjaxSplit.action";
     }
 
+
 }
