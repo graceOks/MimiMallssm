@@ -31,4 +31,6 @@ public interface ProductInfoService {
     int deleteBatch(String []ids);
 
 
+
+
 }
