@@ -1,6 +1,7 @@
 package com.atguigu.controller;
 
 import com.atguigu.pojo.ProductInfo;
+import com.atguigu.pojo.vo.ProductInfoVO;
 import com.atguigu.service.ProductInfoService;
 import com.github.pagehelper.PageInfo;
 import org.json.JSONObject;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -230,6 +232,14 @@ public class ProductInfoController {
         }
         return "forward:/prod/deleteAjaxSplit.action";
 
+    }
+
+    //多条件查询功能实现
+    @ResponseBody
+    @RequestMapping("/condition.action")
+    public void condition(ProductInfoVO vo,HttpSession session){
+        List<ProductInfo> infoList=productInfoService.selectCondition(vo);
+        session.setAttribute("list", infoList);
     }
 
 

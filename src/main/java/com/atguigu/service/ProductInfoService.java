@@ -1,6 +1,7 @@
 package com.atguigu.service;
 
 import com.atguigu.pojo.ProductInfo;
+import com.atguigu.pojo.vo.ProductInfoVO;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -30,7 +31,10 @@ public interface ProductInfoService {
     //批量删除
     int deleteBatch(String []ids);
 
-
-
-
+    /**
+     * 多条件查询
+     * @param vo ProductInfoVO 实体类
+     * @return
+     */
+    List<ProductInfo> selectCondition(ProductInfoVO vo);
 }

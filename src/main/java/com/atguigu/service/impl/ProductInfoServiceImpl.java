@@ -3,6 +3,7 @@ package com.atguigu.service.impl;
 import com.atguigu.mapper.ProductInfoMapper;
 import com.atguigu.pojo.ProductInfo;
 import com.atguigu.pojo.ProductInfoExample;
+import com.atguigu.pojo.vo.ProductInfoVO;
 import com.atguigu.service.ProductInfoService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -64,6 +65,11 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Override
     public int deleteBatch(String[] ids) {
         return productInfoMapper.deleteBatch(ids);
+    }
+
+    @Override
+    public List<ProductInfo> selectCondition(ProductInfoVO vo) {
+        return productInfoMapper.selectCondition(vo);
     }
 
 
