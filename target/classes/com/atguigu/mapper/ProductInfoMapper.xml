@@ -277,7 +277,7 @@
           and p_name like '%${pname}%'
         </if>
       <!--商品类型不为空，拼接商品类型查询条件-->
-        <if test="typeid !=null and typeid !='' ">
+        <if test="typeid !=null and typeid !=-1">
           and type_id =#{typeid}
         </if>
       <!--如果最低价格不为空,最高价格为空,则查询大于最低价格的所有商品-->
@@ -295,5 +295,7 @@
     </where>
     order by p_id desc
   </select>
+
+
 
 </mapper>

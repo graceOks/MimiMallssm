@@ -238,6 +238,8 @@ public class ProductInfoController {
     @ResponseBody
     @RequestMapping("/condition.action")
     public void condition(ProductInfoVO vo,HttpSession session){
+        System.out.println("condition...");
+        System.out.println("vo = " + vo);
         List<ProductInfo> infoList=productInfoService.selectCondition(vo);
         session.setAttribute("list", infoList);
     }

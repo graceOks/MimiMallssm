@@ -105,7 +105,8 @@
                             <th>商品数量</th>
                             <th>操作</th>
                         </tr>
-                        <c:forEach items="${info.list}" var="p">
+                                        <%--info.list--%>
+                        <c:forEach items="${list}" var="p">
                             <tr>
                                 <td valign="center" align="center">
                                 <input type="checkbox" name="ck" id="ck"
@@ -310,7 +311,7 @@
         var hprice = $("#hprice").val();
         $.ajax({
             type: "post",
-            url: "${pageContext.request.contextPath}/prod/ajaxSplit.action",///prod/condition.action
+            url: "${pageContext.request.contextPath}/prod/condition.action",///prod/condition.action
             data: {"pname": pname, "typeid": typeid, "lprice": lprice, "hprice": hprice},
             success: function () {
                 //刷新数据
