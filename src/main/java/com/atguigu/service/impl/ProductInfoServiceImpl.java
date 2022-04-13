@@ -80,5 +80,4 @@ public class ProductInfoServiceImpl implements ProductInfoService {
         return new PageInfo<>(infoList);
     }
 
-
 }
