@@ -70,7 +70,7 @@
                 <option value="${pt.typeId}">${pt.typeName}</option>
             </c:forEach>
         </select>&nbsp;&nbsp;&nbsp;
-            价格：<input name="lprice" id="lprice">-<input name="hprice" id="hprice">
+            价格: 最高价<input name="lprice" id="lprice">- 最低价<input name="hprice" id="hprice">
             <%--不分页查询--%>
             <input type="button" value="查询1" style="width: 80px;" onclick="condition()">
             <%--<input type="button" value="查询" onclick="ajaxsplit(${info.pageNum})">--%>
@@ -106,7 +106,7 @@
                             <th>操作</th>
                         </tr>
                                         <%--info.list--%>
-                        <c:forEach items="${list}" var="p">
+                        <c:forEach items="${info.list}" var="p">
                             <tr>
                                 <td valign="center" align="center">
                                 <input type="checkbox" name="ck" id="ck"
@@ -311,7 +311,7 @@
         var hprice = $("#hprice").val();
         $.ajax({
             type: "post",
-            url: "${pageContext.request.contextPath}/prod/condition.action",///prod/condition.action
+            url: "${pageContext.request.contextPath}/prod/ajaxSplit2.action",///prod/condition.action
             data: {"pname": pname, "typeid": typeid, "lprice": lprice, "hprice": hprice},
             success: function () {
                 //刷新数据

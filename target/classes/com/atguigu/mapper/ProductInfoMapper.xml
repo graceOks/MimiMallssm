@@ -282,7 +282,7 @@
         </if>
       <!--如果最低价格不为空,最高价格为空,则查询大于最低价格的所有商品-->
         <if test="(lprice !=null and lprice !='' ) and (hprice ==null or hprice =='' )">
-          and p_price &gt;=#{lprice}
+          and p_price >=#{lprice}
         </if>
       <!--如果最高价格不为空,最低价格为空,则查询小于最高价格的所有商品-->
         <if test="(hprice !=null and hprice !='' ) and (lprice == null or lprice ==' ' )">
