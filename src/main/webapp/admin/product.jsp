@@ -70,7 +70,7 @@
                 <option value="${pt.typeId}">${pt.typeName}</option>
             </c:forEach>
         </select>&nbsp;&nbsp;&nbsp;
-            价格：<input name="lprice" id="lprice">-<input name="hprice" id="hprice">
+            价格: 最低价<input name="lprice" id="lprice">- 最搞价<input name="hprice" id="hprice">
             <%--不分页查询--%>
             <input type="button" value="查询1" style="width: 80px;" onclick="condition()">
             <%--<input type="button" value="查询" onclick="ajaxsplit(${info.pageNum})">--%>
