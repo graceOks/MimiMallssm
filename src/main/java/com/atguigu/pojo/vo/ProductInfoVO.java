@@ -12,14 +12,18 @@ public class ProductInfoVO {
     //最高价格的封装
     private Integer hprice;
 
+    //设置页码
+    private Integer page=1;
+
     public ProductInfoVO() {
     }
 
-    public ProductInfoVO(String pname, int typeid, Integer lprice, Integer hprice) {
+    public ProductInfoVO(String pname, int typeid, Integer lprice, Integer hprice,Integer page) {
         this.pname = pname;
         this.typeid = typeid;
         this.lprice = lprice;
         this.hprice = hprice;
+        this.page=page;
     }
 
     public String getPname() {
@@ -54,6 +58,14 @@ public class ProductInfoVO {
         this.hprice = hprice;
     }
 
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
     @Override
     public String toString() {
         return "ProductInfoVO{" +
@@ -61,6 +73,7 @@ public class ProductInfoVO {
                 ", typeid='" + typeid + '\'' +
                 ", lprice='" + lprice + '\'' +
                 ", hprice='" + hprice + '\'' +
+                ", page='" + page + '\'' +
                 '}';
     }
 
