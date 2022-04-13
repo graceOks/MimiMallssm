@@ -42,4 +42,5 @@ public interface ProductInfoService {
     //多条件查询分页
     PageInfo splitPageVo(ProductInfoVO vo,int pageSize);
 
+
 }
