@@ -72,5 +72,13 @@ public class ProductInfoServiceImpl implements ProductInfoService {
         return productInfoMapper.selectCondition(vo);
     }
 
+    @Override
+    public PageInfo<ProductInfo> splitPageVo(ProductInfoVO vo, int pageSize) {
+        //取出集合之前，先要设置PageHelper,startPage() 属性
+        PageHelper.startPage(vo.getPage(), pageSize);
+        List<ProductInfo> infoList = productInfoMapper.selectCondition(vo);
+        return new PageInfo<>(infoList);
+    }
+
 
 }

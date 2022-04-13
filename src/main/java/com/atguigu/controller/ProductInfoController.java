@@ -51,10 +51,33 @@ public class ProductInfoController {
     //ajax分页翻页处理
     @ResponseBody
     @RequestMapping("/ajaxSplit.action")
+    public void ajaxSplit(ProductInfoVO vo, HttpSession httpSession) {
+        System.out.println("Ajax...");
+        System.out.println("vo = " + vo);
+        //取得当前page参数的页面的数据
+        PageInfo info = productInfoService.splitPageVo(vo, PAGE_SIZE);
+        httpSession.setAttribute("info", info);
+    }
+
+    /*
+    *
+    @ResponseBody
+    @RequestMapping("/ajaxSplit.action")
     public void ajaxSplit(int page, HttpSession httpSession) {
         System.out.println("Ajax...");
         //取得当前page参数的页面的数据
         PageInfo info = productInfoService.splitPage(page, PAGE_SIZE);
+        httpSession.setAttribute("info", info);
+    }
+    */
+
+    @ResponseBody
+    @RequestMapping("/ajaxSplit2.action")
+    public void ajaxSplit2(ProductInfoVO vo, HttpSession httpSession) {
+        System.out.println("AjaxSplit2...");
+        System.out.println("vo = " + vo);
+        //取得当前page参数的页面的数据
+        PageInfo info = productInfoService.splitPageVo(vo, PAGE_SIZE);
         httpSession.setAttribute("info", info);
     }
 

@@ -37,4 +37,9 @@ public interface ProductInfoService {
      * @return
      */
     List<ProductInfo> selectCondition(ProductInfoVO vo);
+
+
+    //多条件查询分页
+    PageInfo splitPageVo(ProductInfoVO vo,int pageSize);
+
 }
